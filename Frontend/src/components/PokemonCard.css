@@ -1,0 +1,40 @@
+.pokemon-card {
+  width: 180px;
+  height: 210px;
+  padding: 16px;
+  margin: 12px;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}
+
+.pokemon-card h1 {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.pokemon-card h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 8px;
+}
+
+.pokemon-sprite {
+    width: 120px;
+}
+
+.pokemon-type {
+  width: 60px;
+  padding: 5px;
+}
