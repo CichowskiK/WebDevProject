@@ -1,0 +1,14 @@
+.work-in-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-in-progress h1 {
+    font-style: italic;
+}
+
+.work-in-progress img {
+    height: 40vh;
+}

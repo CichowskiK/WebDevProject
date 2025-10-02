@@ -1,0 +1,18 @@
+.games-display {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.games-display button {
+  margin-top: 5px;
+  padding: 10px 18px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
