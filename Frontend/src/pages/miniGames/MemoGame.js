@@ -33,7 +33,7 @@ const MemoGame = () => {
         setFlippedCards(new Array(shuffled.length).fill(false))
         setMatchedCards(new Array(shuffled.length).fill(false))
         setSelectedCards([])
-    }, [pokemonList])  //to jest do wyrzucania w momencie kiedy zrobimy przycisk startu i cała logika z useEffect pójdzie do przycisku startu
+    }, [])  //to jest do wyrzucania w momencie kiedy zrobimy przycisk startu i cała logika z useEffect pójdzie do przycisku startu
 
     const handleCardClick = (index) => {
         if (selectedCards.length === 2) return
@@ -59,6 +59,7 @@ const MemoGame = () => {
                 setMatchedCards(newMatched)
                 setSelectedCards([])
                 addPokemon(pokemons[first], user.id)
+                updateList(pokemons[first])
             } else {
                 // ❌ brak pary → odwracamy z powrotem po 1s
                 setTimeout(() => {

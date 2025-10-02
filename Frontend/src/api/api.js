@@ -1,4 +1,5 @@
 export const addPokemon = async (pokemonId, userId) => {
+  if(userId == -1) return
     try {
       const res = await fetch("https://pokedexbackend-la0a.onrender.com/api/pokemons/add", {
         method: "POST",
@@ -12,6 +13,7 @@ export const addPokemon = async (pokemonId, userId) => {
 }
 
 export const getPokemon = async (userId) => {
+  if (userId == -1) return
     try {
         const response = await fetch(`https://pokedexbackend-la0a.onrender.com/api/pokemons/${userId}`);
         if (!response.ok) {

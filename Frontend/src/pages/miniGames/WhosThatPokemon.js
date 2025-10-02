@@ -35,7 +35,7 @@ const WhosThatPokemon = () => {
 
         if (guess.toLowerCase() === pokemonData.name.toLowerCase()) {
             addPokemon(randomInt+1, user.id)
-            updateList()
+            updateList(randomInt+1)
 
             setMessage("You won!!! Try again?")
             setButtonColor("green")

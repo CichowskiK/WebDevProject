@@ -11,7 +11,8 @@ export const UserPokemonsProvider = ({ children }) => {
 
 
     useEffect(() => {
-        const updateList = async () => {
+        const updateListEffect = async () => {
+            console.log("weszło w useEffect")
                 const storedPokemonList = JSON.parse(localStorage.getItem("pokemonList"))
             if(!storedPokemonList || storedPokemonList.id != user.id) {
                 //console.log("nie ma listy")
@@ -27,12 +28,31 @@ export const UserPokemonsProvider = ({ children }) => {
             }
         }
         if(user) {
-            updateList()
+            if(user.id ==-1) {
+                return
+            }
+            updateListEffect()
         }
     }, [user])
   
 
-    const updateList = async () => {
+    const updateList = async (newPokemon) => {
+        if(user.id == -1) {
+            const stored = JSON.parse(localStorage.getItem("pokemonList"));
+            setPokemonList(stored?.list || []);
+            if(!newPokemon) return
+            console.log("1")
+            const list = [...pokemonList, newPokemon]
+            console.log("2")
+            setPokemonList(list)
+            console.log("3")
+            localStorage.setItem("pokemonList", 
+                    JSON.stringify({id: user.id, list: list})
+            )
+            console.log(list)
+            console.log("4")
+            return
+        }
         const list = await getPokemon(user.id)
         localStorage.setItem("pokemonList", 
                     JSON.stringify({id: user.id, list: list})

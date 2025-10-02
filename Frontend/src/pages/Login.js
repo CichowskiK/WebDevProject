@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { usePokemonList } from "../context/UserPokemonsContext"
 import api from "../api/api"
 import "./LoginRegister.css"
 
@@ -10,6 +11,7 @@ const Login = () => {
     const [error, setError] =React.useState('')
 
     const {login} = useAuth()
+    const {updateList} = usePokemonList()
     const navigate =  useNavigate()
 
     const handleSubmit = async (e) => {
@@ -28,13 +30,22 @@ const Login = () => {
 
             const data = await response.json()
 
-            login(data);
+            login(data)
 
 
-            navigate("/pokedex");
+            navigate("/pokedex")
         } catch (err) {
-            setError("Niepoprawny email lub hasło");
+            setError("Niepoprawny email lub hasło")
         }
+    }
+
+    const playAsGuest = (e) => {
+        e.preventDefault()
+        login({id: -1, username: "Guest"})
+        localStorage.setItem("pokemonList", 
+                    JSON.stringify({id: -1, list: []})
+        )
+        navigate("/pokedex")
     }
 
     return (
@@ -60,6 +71,10 @@ const Login = () => {
                 />
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <button type="submit">Login</button>
+                <button 
+                    style={{marginTop: "5px"}}
+                    onClick = {playAsGuest}
+                >Play as Guest</button>
             </form>
 
             <form>
